@@ -2,13 +2,13 @@
 
 ## users テーブル
 
-| Column              | Type    | Options      |
-| --------------------|---------| -------------|
-| nickname            | string  | null: false  |
-| email               | string  | null: false  |
-| encrypted_password  | string  | null: false  |
-| name                | string  | null: false  |
-| birthday            | string  | null: false  |
+| Column              | Type    | Options                   |
+| --------------------|---------| --------------------------|
+| nickname            | string  | null: false               |
+| email               | string  | null: false, unique: true |
+| encrypted_password  | string  | null: false               |
+| name                | string  | null: false               |
+| birthday            | string  | null: false               |
 
 ### Association
 
@@ -44,15 +44,14 @@
 ### Association
 -belongs_to :user
 -has_many :contents
--belongs_to :shipping_address
+-has_one :shipping_address
 
 
 ## shipping_address
 
 | Column            | Type       | Options     |
 | ------------------|------------| ------------|
-| credit_card_data  | string     | null: false |
-| user              | string     | null: false |
+| address           | string     | null: false |
 
 ### Association
--belongs_to :purchase
+-has_one :purchase
