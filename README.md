@@ -42,8 +42,8 @@
 
 | Column         | Type       | Options                        |
 | ---------------|------------| -------------------------------|
-| user           | reference  | null: false, foreign_key: true |
-| content        | reference  | null: false, foreign_key: true |
+| user           | references  | null: false, foreign_key: true |
+| content        | references  | null: false, foreign_key: true |
 
 
 ### Association
@@ -54,13 +54,15 @@
 
 ## shipping_addresses
 
-| Column            | Type       | Options     |
-| ------------------|------------| ------------|
-| postal_code       | string     | null: false |
-| prefectures       | string     | null: false |
-| municipality      | string     | null: false |
-| address           | string     | null: false |
-| telephone_number  | string     | null: false |
+| Column            | Type       | Options                        |
+| ------------------|------------| -------------------------------|
+| postal_code       | string     | null: false                    |
+| area              | string     | null: false                    |
+| municipality      | string     | null: false                    |
+| address           | string     | null: false                    |
+| building          | string     |                                |
+| telephone_number  | string     | null: false                    |
+| purchases         | references | null: false, foreign_key: true |
 
 ### Association
 -belongs_to :purchase

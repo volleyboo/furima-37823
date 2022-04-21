@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="gdSnRDnFjv2u0b2Tpb8A" name="ページ1">
-        <mxGraphModel dx="485" dy="389" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="971" dy="777" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -23,10 +23,10 @@
                     <mxGeometry y="26" width="250" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="24" value="shipping_addresses" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="585" width="240" height="130" as="geometry"/>
+                    <mxGeometry x="540" y="585" width="280" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="postal_code (string型, NOT NULL)&#10;prefectures (string型, NOT NULL)&#10;municipality (string型, NOT NULL)&#10;address (string型, NOT NULL)&#10;building (string型)&#10;telephone_number (string型, NOT NULL)&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="24" vertex="1">
-                    <mxGeometry y="26" width="240" height="104" as="geometry"/>
+                <mxCell id="25" value="postal_code (string型, NOT NULL)&#10;prefectures (string型, NOT NULL)&#10;municipality (string型, NOT NULL)&#10;address (string型, NOT NULL)&#10;building (string型)&#10;telephone_number (string型, NOT NULL)&#10;purchases (references型, NOT NULL, 外部キー)&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="24" vertex="1">
+                    <mxGeometry y="26" width="280" height="114" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" value="" style="endArrow=none;html=1;exitX=0.6;exitY=0.001;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="20" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
