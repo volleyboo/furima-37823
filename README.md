@@ -11,7 +11,7 @@
 | first_name          | string    | null: false               |
 | last_name_kana      | string    | null: false               |
 | first_name_kana     | string    | null: false               |
-| birthday            | datetime  | null: false               |
+| birthday            | date      | null: false               |
 
 ### Association
 
@@ -23,10 +23,13 @@
 
 | Column            | Type       | Options                        |
 | ------------------|------------| -------------------------------|
-| title             | text       | null: false                    |
-| text              | text       | null: false                    |
-| detail_id         | integer    | null: false                    |
-| delivery_id       | integer    | null: false                    |
+| title             | string     | null: false                    |
+| explanation       | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| state_id          | integer    | null: false                    |
+| charge_id         | integer    | null: false                    |
+| area_id           | integer    | null: false                    |
+| days_id           | integer    | null: false                    |
 | price             | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
 
@@ -54,6 +57,7 @@
 | Column            | Type       | Options     |
 | ------------------|------------| ------------|
 | shipping_address  | string     | null: false |
+| telephone_number  | string     | null: false |
 
 ### Association
 -belongs_to :purchase
