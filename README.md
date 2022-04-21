@@ -1,24 +1,58 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column              | Type    | Options      |
+| --------------------|---------| -------------|
+| nickname            | string  | null: false  |
+| email               | string  | null: false  |
+| encrypted_password  | string  | null: false  |
+| name                | string  | null: false  |
+| birthday            | string  | null: false  |
 
-* Ruby version
+### Association
 
-* System dependencies
+-has_many :contents
+-has_many :purchases
 
-* Configuration
 
-* Database creation
+## contents テーブル
 
-* Database initialization
+| Column            | Type       | Options                        |
+| ------------------|------------| -------------------------------|
+| title             | string     | null: false                    |
+| text              | string     | null: false                    |
+| detail            | string     | null: false                    |
+| delivery          | string     | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
+| purchase          | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+-belongs_to :user
+-belongs_to :purchase
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## purchases テーブル
 
-* ...
+| Column            | Type       | Options                        |
+| ------------------|------------| -------------------------------|
+| comment           | text       | null: false                    |
+| user              | reference  | null: false, foreign_key: true |
+
+
+### Association
+-belongs_to :user
+-has_many :contents
+-belongs_to :shipping_address
+
+
+## shipping_address
+
+| Column            | Type       | Options     |
+| ------------------|------------| ------------|
+| credit_card_data  | string     | null: false |
+| user              | string     | null: false |
+
+### Association
+-belongs_to :purchase
