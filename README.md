@@ -56,7 +56,10 @@
 
 | Column            | Type       | Options     |
 | ------------------|------------| ------------|
-| shipping_address  | string     | null: false |
+| postal_code       | string     | null: false |
+| prefectures       | string     | null: false |
+| municipality      | string     | null: false |
+| address           | string     | null: false |
 | telephone_number  | string     | null: false |
 
 ### Association
