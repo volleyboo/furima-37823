@@ -34,14 +34,12 @@ class Content < ApplicationRecord
   #価格の情報が必須であること。
   #価格は、¥300~¥9,999,999の間のみ保存可能であること。
   #価格は半角数値のみ保存可能であること。
-  validates :price, presence: true, 
-            numericality: { only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999 },
-            format: {with: /^[0-9]+$/}
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9_999_999 }, format: {with: /^[0-9]+$/}
   #入力された価格によって、販売手数料や販売利益の表示が変わること。
   
   #販売手数料と販売利益は、小数点以下を切り捨てて表示すること。
  
   #ジャンルの選択が「--」の時は保存できないようにする
-  validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}}
+  #validates :genre_id, numericality: { other_than: 1 , message: "can't be blank"}}
 
 end

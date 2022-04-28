@@ -1,1 +1,1 @@
-class Genre < ActiveHash::Base
+#class Genre < ActiveHash::Base
