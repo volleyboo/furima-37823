@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 2022_04_28_023050) do
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "explanation", null: false
-    t.integer "category", null: false
-    t.integer "state", null: false
-    t.integer "charge", null: false
-    t.integer "area", null: false
-    t.integer "days", null: false
+    t.integer "category_id", null: false
+    t.integer "state_id", null: false
+    t.integer "charge_id", null: false
+    t.integer "area_id", null: false
+    t.integer "days_id", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_04_28_023050) do
     t.string "first_name"
     t.string "last_name_kana"
     t.string "first_name_kana"
-    t.string "birthday"
+    t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
