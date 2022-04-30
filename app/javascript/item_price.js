@@ -10,8 +10,5 @@ window.addEventListener('load', () => {
     const profitDom = document.getElementById("profit");
     profitDom.innerHTML = Math.floor(inputValue*0.9)
 
-    console.log(inputValue);
  })
-  console.log(priceInput);
-  console.log("OK");
 });

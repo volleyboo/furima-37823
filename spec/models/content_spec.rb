@@ -58,15 +58,50 @@ RSpec.describe Content, type: :model do
         @content.valid?
         expect(@content.errors.full_messages).to include("Price can't be blank")
       end
-      it '価格は¥300~¥9,999,999の間のみ保存可能' do
-        @content.price = '299', '10000000'
+      it '価格は¥299以下だと保存できない' do
+        @content.price = '299'
         @content.valid?
-        expect(@content.errors.full_messages).to include("Price can't be blank")
+        expect(@content.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
-      it '価格は半角数値のみ保存可能' do
+      it '価格は¥10,000,000以上だと保存できない' do
+        @content.price = '10000000'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it '価格は半角数値のみ保存できる' do
         @content.price = '１234'
         @content.valid?
         expect(@content.errors.full_messages).to include("Price is not a number")
+      end
+      it 'ユーザーが紐付いていなければ保存できない' do
+        @content.user = nil
+        @content.valid?
+        expect(@content.errors.full_messages).to include('User must exist')
+      end
+      it 'category:2以上のidが選択されないと保存できない' do
+        @content.category_id = '1'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'state:2以上のidが選択されないと保存できない' do
+        @content.state_id = '1'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("State can't be blank")
+      end
+      it 'charge:2以上のidが選択されないと保存できない' do
+        @content.charge_id = '1'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("Charge can't be blank")
+      end
+      it 'area:2以上のidが選択されないと保存できない' do
+        @content.area_id = '1'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("Area can't be blank")
+      end
+      it 'days:2以上のidが選択されないと保存できない' do
+        @content.days_id = '1'
+        @content.valid?
+        expect(@content.errors.full_messages).to include("Days can't be blank")
       end
 
     end
