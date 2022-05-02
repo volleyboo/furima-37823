@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @contents = Content.order("created_at DESC")
