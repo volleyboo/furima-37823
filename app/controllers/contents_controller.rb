@@ -40,8 +40,12 @@ class ContentsController < ApplicationController
   end
 
   def destroy
-    @content.destroy
-    redirect_to root_path
+    if current_user.id != @content.user_id
+      redirect_to root_path
+    else
+      @content.destroy
+      redirect_to root_path
+    end
   end
 
   private
