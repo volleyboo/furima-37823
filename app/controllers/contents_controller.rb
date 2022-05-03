@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_content, only: [:show, :edit, :update]
+  before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
     @contents = Content.order("created_at DESC")
@@ -37,6 +37,11 @@ class ContentsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @content.destroy
+    redirect_to root_path
   end
 
   private
