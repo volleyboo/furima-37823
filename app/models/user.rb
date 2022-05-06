@@ -15,7 +15,7 @@ class User < ApplicationRecord
   
   include ActiveHash::Associations
   has_many :contents
-  #has_many :purchases
+  has_many :purchases
 
 
   
