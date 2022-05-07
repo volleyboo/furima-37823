@@ -1,7 +1,7 @@
 class PurchaseForm
   include ActiveModel::Model
 
-  attr_accessor :postal_code, :area_id, :municipality, :address, :building, :telephone_number, :user_id, :content_id
+  attr_accessor :postal_code, :area_id, :municipality, :address, :building, :telephone_number, :user_id, :content_id, :token
 
   with_options presence: true do
   validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
