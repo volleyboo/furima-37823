@@ -25,7 +25,7 @@ RSpec.describe PurchaseForm, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できない' do
         @purchase_form.postal_code = '1234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
+        expect(@purchase_form.errors.full_messages).to include("Postal code is invalid")
       end
       it 'area:必須' do
         @purchase_form.area_id = ''
@@ -55,12 +55,12 @@ RSpec.describe PurchaseForm, type: :model do
       it '電話番号は半角数値のみ保存できる' do
         @purchase_form.telephone_number = '１234'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid. Input only number")
+        expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid")
       end
       it '電話番号は9桁以下だと保存できない' do
-        @purchase_form.price = '111111111'
+        @purchase_form.telephone_number = '111111111'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Telephone number is too short")
+        expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid")
       end
       
     end

@@ -7,12 +7,13 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @purchase_form = PurchaseForm.new(purchase_params)
-    if @purchase_form.valid?
-      @purchase_form.save
+    @purchase = PurchaseForm.new(purchase_params)
+    if @purchase.valid?
+      @purchase.save
       redirect_to root_path
     else
-      redirect_to content_purchases_path
+      @content = Content.find(params[:content_id])
+      render :index
     end 
   end
   
