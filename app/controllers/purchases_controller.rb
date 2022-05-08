@@ -9,12 +9,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase = PurchaseForm.new(purchase_params)
     if @purchase.valid?
-      Payjp.api_key = "sk_test_***********"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
-      Payjp::Charge.create(
-        amount: order_params[:price],  # 商品の値段
-        card: order_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
-      )
+      pay_item
       @purchase.save
       redirect_to root_path
     else
@@ -35,6 +30,12 @@ class PurchasesController < ApplicationController
     @content = Content.find(params[:content_id])
   end
 
-
-  
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp::Charge.create(
+        amount: @content.price,
+        card: purchase_params[:token],
+        currency: 'jpy'
+      )
+  end
 end

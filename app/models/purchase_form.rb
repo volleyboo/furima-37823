@@ -13,6 +13,7 @@ class PurchaseForm
   validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
   validates :user_id, presence: true
   validates :content_id, presence: true
+  validates :token, presence: true
   end
 
   def save

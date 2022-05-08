@@ -14,6 +14,9 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.building = ''
         expect(@purchase_form).to be_valid
       end
+      it "tokenがあれば保存ができること" do
+        expect(@purchase_form).to be_valid
+      end
     end
 
     context '保存ができない場合' do
@@ -61,6 +64,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.telephone_number = '111111111'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it "tokenが空では登録できないこと" do
+        @purchase_form.token = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Token can't be blank")
       end
       
     end
