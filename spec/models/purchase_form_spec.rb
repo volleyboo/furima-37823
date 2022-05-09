@@ -65,6 +65,21 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid")
       end
+      it '電話番号は12桁以上だと保存できない' do
+        @purchase_form.telephone_number = '111111111111'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it 'userが紐付いていないと保存できないこと' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
+      it 'contentが紐付いていないと保存できないこと' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
       it "tokenが空では登録できないこと" do
         @purchase_form.token = nil
         @purchase_form.valid?
