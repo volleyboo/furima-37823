@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_28_023050) do
+ActiveRecord::Schema.define(version: 2022_05_04_075702) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,28 @@ ActiveRecord::Schema.define(version: 2022_04_28_023050) do
     t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_purchases_on_content_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "shipping_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.string "area_id", null: false
+    t.string "municipality", null: false
+    t.string "address", null: false
+    t.string "building"
+    t.string "telephone_number", null: false
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["purchase_id"], name: "index_shipping_addresses_on_purchase_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +90,7 @@ ActiveRecord::Schema.define(version: 2022_04_28_023050) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contents", "users"
+  add_foreign_key "purchases", "contents"
+  add_foreign_key "purchases", "users"
+  add_foreign_key "shipping_addresses", "purchases"
 end

@@ -23,7 +23,7 @@ class ContentsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @content.user_id
+    if current_user.id != @content.user_id || @content.purchase != nil
       redirect_to root_path
     else
       render :edit
