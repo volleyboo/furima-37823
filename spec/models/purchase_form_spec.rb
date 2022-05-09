@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PurchaseForm, type: :model do
   before do
-    @purchase_form = FactoryBot.build(:purchase_form)
+    user = FactoryBot.create(:user)
+    content = FactoryBot.create(:content)
+    @purchase_form = FactoryBot.build(:purchase_form, user_id: user.id, content_id: content.id)
   end
 
   describe '配送先情報情報の保存' do
@@ -76,9 +78,9 @@ RSpec.describe PurchaseForm, type: :model do
         expect(@purchase_form.errors.full_messages).to include("User can't be blank")
       end
       it 'contentが紐付いていないと保存できないこと' do
-        @purchase_form.user_id = nil
+        @purchase_form.content_id = nil
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+        expect(@purchase_form.errors.full_messages).to include("Content can't be blank")
       end
       it "tokenが空では登録できないこと" do
         @purchase_form.token = nil

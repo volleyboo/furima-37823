@@ -16,7 +16,6 @@ class PurchasesController < ApplicationController
       @purchase.save
       redirect_to root_path
     else
-      @content = Content.find(params[:content_id])
       render :index
     end 
   end
