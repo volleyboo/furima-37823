@@ -9,7 +9,6 @@ class PurchaseForm
   validates :municipality, presence: true
   validates :address, presence: true
   validates :building, numericality: { only_integer: true }, allow_blank: true
-  validates :telephone_number, presence: true, format: { with: /\A[0-9]+\z/ }
   validates :telephone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
   validates :user_id, presence: true
   validates :content_id, presence: true

@@ -1,9 +1,12 @@
 class PurchasesController < ApplicationController
   before_action :set_content, only: [:index, :create]
-
-
+  before_action :authenticate_user!
+  
   def index
     @purchase = PurchaseForm.new
+    if @content.user_id == current_user.id || @content.purchase != nil
+      redirect_to root_path
+    end
   end
 
   def create
@@ -38,4 +41,7 @@ class PurchasesController < ApplicationController
         currency: 'jpy'
       )
   end
+
+    
+
 end
